@@ -1,7 +1,7 @@
-# 2020CCE
-
-1.進階題：分式化簡
-```C
+# 2020cce
+# 第一次實習課程式
+## 1.進階題：分式化簡
+```c
 #include <stdio.h>
 int main()
 {
@@ -19,7 +19,7 @@ int main()
 	printf("%d %d\n",A/b,B/b);
 }
 ```
-2.進階題：讀入整數反序列印
+## 2.進階題：讀入整數反序列印
 ```C
 #include <stdio.h>
 int main()
@@ -38,7 +38,7 @@ int main()
 	printf("\n");
 }
 ```
-3.進階題：A的B次方函數
+## 3.進階題：A的B次方函數
 ```C
 #include <stdio.h>
 int MYPOWER(int a,int b)
@@ -58,7 +58,7 @@ int main(void)
 	return 0;
 }
 ```
-4.進階題：漸增數列相加
+## 4.進階題：漸增數列相加
 ```C
 #include <stdio.h>
 int main()
@@ -72,7 +72,7 @@ int main()
 	printf("%d\n",ans);
 }
 ```
-5.基礎題：找零錢
+## 5.基礎題：找零錢
 ```C
 #include <stdio.h>
 int main()
@@ -82,7 +82,7 @@ int main()
 	printf("%d=50*%d+5*%d+1*%d\n",a,a/50,a%50/5,a%50%5);
 }
 ```
-6.基礎題：因數個數
+## 6.基礎題：因數個數
 ```C
 #include <stdio.h>
 int main()
@@ -99,7 +99,7 @@ int main()
 	printf("%d\n",b);
 }
 ```
-7.基礎題：找倍數
+## 7.基礎題：找倍數
 ```C
 #include <stdio.h>
 int main()
@@ -116,7 +116,7 @@ int main()
 	printf("%d\n",b);
 }
 ```
-8.基礎題：整數轉換為等級
+## 8.基礎題：整數轉換為等級
 ```C
 #include <stdio.h>
 int main()
