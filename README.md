@@ -1,213 +1,161 @@
-#    2020cce
-##   程式1
-8-1
-```c
+# 2020cce
+## 10-1
+```c=
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-char tree[1000000][32];
+char line[10000];
 int main()
 {
-	int T;
-	scanf("%d\n\n",&T);
-	for(int t=0;t<T;t++)
+	int n;
+	scanf("%d\n",&n);
+	
+	for(int i=0;i<n;i++)
 	{
-		int N=0;
-		for(int i=0;    ;i++)
+		gets(line);
+		
+		printf("%s\n",line);
+	}
+}
+```
+![](https://i.imgur.com/LBFwI7i.png)
+## 10-2
+```c=
+#include <stdio.h>
+char line[10000];
+int main()
+{
+	int n;
+	scanf("%d\n",&n);
+	
+	for(int i=0;i<n;i++)
+	{
+		gets(line);
+		
+		for(int k=0;line[k]!=0;k++)
 		{
-			gets(tree[i]);
-			if(strcmp(tree[i],"")==0)
+			char c=line[k];
+			if(c>='A'&&c<='Z') printf("大");
+			else if(c>='a'&&c<='z') printf("小");
+			else printf("他");
+		}
+		
+	}
+}
+```
+![](https://i.imgur.com/YQ8oCSG.png)
+## 10-3
+```c=
+#include <stdio.h>
+char line[10000];
+int ans[26];
+int main()
+{
+	int n;
+	scanf("%d\n",&n);
+	
+	for(int i=0;i<n;i++)
+	{
+		gets(line);
+		
+		for(int k=0;line[k]!=0;k++)
+		{
+			char c=line[k];
+			if(c>='A'&&c<='Z') ans[c-'A']++;
+			else if(c>='a'&&c<='z') ans[c-'a']++;
+		}
+	}
+	for(int i=0;i<26;i++)
+	{
+		printf("%c %d\n",'A'+i,ans[i]);
+	}
+}
+```
+![](https://i.imgur.com/UDWgpgk.png)
+## 10-4
+```c=
+#include <stdio.h>
+char line[10000];
+int ans[26];
+char alphabet[]="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+int main()
+{
+	int n;
+	scanf("%d\n",&n);
+	
+	for(int i=0;i<n;i++)
+	{
+		gets(line);
+		
+		for(int k=0;line[k]!=0;k++)
+		{
+			char c=line[k];
+			if(c>='A'&&c<='Z') ans[c-'A']++;
+			else if(c>='a'&&c<='z') ans[c-'a']++;
+		}
+	}
+	for(int i=0;i<26;i++)
+	{
+		for(int j=i+1;j<26;j++)
+		{
+			if(ans[i]<ans[j]||(ans[i]==ans[j]&&alphabet[i]>alphabet[j]))
 			{
-				N=i;
-				break;
+				int temp=ans[i];
+				ans[i]=ans[j];
+				ans[j]=temp;
+				char c=alphabet[i];
+				alphabet[i]=alphabet[j];
+				alphabet[j]=c;
 			}
 		}
-		for(int i=0;i<N;i++)
-		{
-			printf("%s\n",tree[i]);
-		}
+	}
+	for(int i=0;i<26;i++)
+	{
+		if(ans[i]>0) printf("%c %d\n",alphabet[i],ans[i]);
 	}
 }
 ```
-![](https://i.imgur.com/549eyYG.png)
-
-8-2
-```c
+![](https://i.imgur.com/6HeJMOX.png)
+## 10-5
+```c=
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
-char tree[1000000][32];
+char line[10000];
+typedef struct
+{
+	int ans;
+	char c;
+}BOX;
+BOX array[26];
 int compare(const void *p1,const void *p2)
 {
-	return strcmp((char*)p1,(char*)p2);
+	if(((BOX*)p1)->ans >((BOX*)p2)->ans) return -1;
+	else if(((BOX*)p1)->ans <((BOX*)p2)->ans) return +1;
+	else if(((BOX*)p1)->c <((BOX*)p2)->c) return -1;
+	else if(((BOX*)p1)->c >((BOX*)p2)->c) return +1;
+	else return 0;
 }
 int main()
 {
-	int T;
-	scanf("%d\n\n",&T);
-	for(int t=0;t<T;t++)
+	for(int i=0;i<26;i++)
 	{
-		int N=0;
-		for(int i=0;    ;i++)
+		array[i].c='A'+i;
+	}
+	int n;
+	scanf("%d\n",&n);
+	for(int i=0;i<n;i++)
+	{
+		gets(line);
+		for(int k=0;line[k]!=0;k++)
 		{
-			gets(tree[i]);
-			if(strcmp(tree[i],"")==0)
-			{
-				N=i;
-				break;
-			}
+			char c=line[k];
+			if(c>='A'&&c<='Z') array[c-'A'].ans++;
+			else if(c>='a'&&c<='z') array[c-'a'].ans++;
 		}
-		qsort(tree,N,32,compare);
-		for(int i=0;i<N;i++)
-		{
-			printf("%s\n",tree[i]);
-		}
+	}
+	qsort(array,26,sizeof(BOX),compare);
+	for(int i=0;i<26;i++)
+	{
+		if(array[i].ans>0) printf("%c %d\n",array[i].c,array[i].ans);
 	}
 }
 ```
-![](https://i.imgur.com/QX6xITK.png)
-
-8-3
-```c
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-char line[100][10];
-int compare(const void *p1,const void *p2)
-{
-	return strcmp((char*)p1,(char*)p2);
-}
-int main()
-{
-	int a;
-	scanf("%d",&a);
-	for(int i=0;i<a;i++)
-	{
-		scanf("%s",line[i]);
-	}
-	qsort(line,a,10,compare);
-	for(int i=0;i<a;i++)
-	{
-		printf("%s\n",line[i]);
-	}
-}
-```
-![](https://i.imgur.com/SQU33yD.png)
-
-8-4
-```c
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-char name[2000][80];
-char others[80];
-int compare(const void *p1,const void *p2)
-{
-	return strcmp((char*)p1,(char*)p2);
-}
-int main()
-{
-	int a;
-	scanf("%d",&a);
-	for(int i=0;i<a;i++)
-	{
-		scanf("%s",name[i]);
-		gets(others);
-	}
-	qsort(name,a,80,compare);
-	for(int i=0;i<a;i++)
-	{
-		printf("%s\n",name[i]);
-	}
-}
-```
-![](https://i.imgur.com/kxlIJMd.png)
-
-8-5
-```c
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-char name[2000][80];
-char others[80];
-int compare(const void *p1,const void *p2)
-{
-	return strcmp((char*)p1,(char*)p2);
-}
-int main()
-{
-	int a;
-	scanf("%d",&a);
-	for(int i=0;i<a;i++)
-	{
-		scanf("%s",name[i]);
-		gets(others);
-	}
-	qsort(name,a,80,compare);
-	int A=1;
-	printf("%s ",name[0]);
-	for(int i=0;i<a-1;i++)
-	{
-		if(strcmp(name[i],name[i+1])!=0)
-		{
-			printf("%d\n",A);
-			printf("%s ",name[i+1]);
-			A=1;
-		}
-		else
-		{
-			A++;
-		}
-	}
-	printf("%d\n",A);
-}
-```
-![](https://i.imgur.com/QpZjXEr.png)
-
-8-6
-```c
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-char tree[1000000][32];
-int compare(const void *p1,const void *p2)
-{
-	return strcmp((char*)p1,(char*)p2);
-}
-int main()
-{
-	int T;
-	scanf("%d\n\n",&T);
-	for(int t=0;t<T;t++)
-	{
-		int N=0;
-		for(int i=0;    ;i++)
-		{
-			gets(tree[i]);
-			if(strcmp(tree[i],"")==0)
-			{
-				N=i;
-				break;
-			}
-		}
-		qsort(tree,N,32,compare);
-		int A=1;
-		printf("%s ",tree[0]);
-		for(int i=0;i<N-1;i++)
-		{
-			if(strcmp(tree[i],tree[i+1])!=0)
-			{
-				printf("%.4f\n",100*A/(float)N);
-				printf("%s ",tree[i+1]);
-				A=1;
-			}
-			else
-			{
-				A++;
-			}
-		}
-		printf("%.4f\n",100*A/(float)N);
-	}
-}
-```
-![](https://i.imgur.com/Y23trKB.png)
+![](https://i.imgur.com/weK1Mxd.png)
