@@ -1,113 +1,208 @@
 # 2020cce
-## 5/6程式
-### 程式1
-```c=
-#include <stdio.h>
-unsigned char c;
-typedef unsigned char uchar;
-uchar d;
-int main()
-{
-    c='A';
-    d=c;
-    printf("%c",d);
-}
-```
-![](https://i.imgur.com/H3C2iNt.png)
-### 程式2
-```c=
-#include <stdio.h>
-typedef struct data
-{
-    char c;
-    int ans;
-}DATA;
-DATA listA;
-int main()
-{
-    listA.c='A';
-    listA.ans=1;
-    printf("%c %d\n",listA.c,listA.ans);
-}
-```
-![](https://i.imgur.com/aFmwdHJ.png)
-### 程式3
-```c=
-#include <stdio.h>
-#include <stdlib.h>
-int compare(const void *p1,const void *p2)
-{
-    int d1=*( (int*)p1 );
-    int d2=*( (int*)p2 );
-    if(d1>d2) return 1;
-    if(d1==d2) return 0;
-    if(d1<d2) return -1;
-}
-int a[10]={4,8,3,7,5,2,9,1,6,10};
-int main()
-{
-    qsort(a,10,sizeof(int),compare);
-    for(int i=0;i<10;i++)
-    {
-        printf("%d ",a[i]);
-    }
-}
-```
-![](https://i.imgur.com/YT67KJD.png)
-### 程式4
-```c=
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-char name[2000][80];
-char others[80];
-int compare(const void *p1,const void *p2)
-{
-	char *s1=(char*)p1 ;
-    char *s2=(char*)p2 ;
-    if(strcmp(s1,s2)>0) return 1;
-    if(strcmp(s1,s2)==0) return 0;
-    if(strcmp(s1,s2)<0) return -1;
-}
-int main()
-{
-	int n;
-	scanf("%d",&n);
-	for(int i=0;i<=n;i++)
-	{
-		scanf("%s",name[i]);
-		gets(others);
-	}
-	qsort(name,n,80,compare);
-	printf("%s ",name[0]);
-	int ans=1;
-	for(int i=0;i<n-1;i++)
-	{
-		if(strcmp(name[i],name[i+1])!=0)
-		{
-			printf("%d\n",ans);
-			printf("%s ",name[i+1]);
-			ans=1;
-		}
-		else ans++;
-	}
-	printf("%d\n",ans);
-}
-```
-![](https://i.imgur.com/8Cp3Xqg.png)
-### 程式5
+## 5/13程式
+### week12-1
 ```c=
 #include <stdio.h>
 char line[2000];
 int main()
 {
-	for(int t=0;gets(line)!=NULL;t++)
+	for(int t=0;gets(line);t++)
 	{
+		int ans[256]={};
+		char ascii[256];
+		for(int i=0;i<256;i++) ascii[i]=i;
+		for(int i=0;line[i]!=0;i++)
+		{
+			char c=line[i];
+			ans[c]++;
+		}
+		for(int i=0;i<256;i++)
+		{
+			for(int j=i+1;j<256;j++)
+			{
+				if(ans[i]>ans[j])
+				{
+					int temp=ans[i];
+					ans[i]=ans[j];
+					ans[j]=temp;
+					char c=ascii[i];
+					ascii[i]=ascii[j];
+					ascii[j]=c;
+				}
+			}
+		}
 		if(t>0) printf("\n");
-		printf("blahblah\n");
-		printf("blahblah\n");
-		printf("blahblah\n");
+		for(int i=0;i<256;i++)
+		{
+			if(ans[i]>0) printf("%d %d\n",i,ans[i]);
+		}
 	}
 }
 ```
-![](https://i.imgur.com/Ngx1Vr8.png)
+![](https://i.imgur.com/0gzqj2z.png)
+### week12-2
+```c=
+#include <stdio.h>
+char line[2000];
+int main()
+{
+	for(int t=0;gets(line);t++)
+	{
+		int ans[256]={};
+		char ascii[256];
+		for(int i=0;i<256;i++) ascii[i]=i;
+		for(int i=0;line[i]!=0;i++)
+		{
+			char c=line[i];
+			ans[c]++;
+		}
+		for(int i=0;i<256;i++)
+		{
+			for(int j=i+1;j<256;j++)
+			{
+				if(ans[i]>ans[j])
+				{
+					int temp=ans[i];
+					ans[i]=ans[j];
+					ans[j]=temp;
+					char c=ascii[i];
+					ascii[i]=ascii[j];
+					ascii[j]=c;
+				}
+				if(ans[i]==ans[j]&&ascii[i]<ascii[j])
+				{
+					int temp=ans[i];
+					ans[i]=ans[j];
+					ans[j]=temp;
+					char c=ascii[i];
+					ascii[i]=ascii[j];
+					ascii[j]=c;
+				}
+			}
+		}
+		if(t>0) printf("\n");
+		for(int i=0;i<256;i++)
+		{
+			if(ans[i]>0) printf("%d %d\n",ascii[i],ans[i]);
+		}
+	}
+}
+```
+![](https://i.imgur.com/XFF6yee.png)
+### week12-3
+```c=
+#include <stdio.h>
+int a[100];
+int main()
+{
+	int T;
+	scanf("%d",&T);
+	for(int t=0;t<T;t++)
+	{
+		int N;
+		scanf("%d",&N);
+		for(int i=0;i<N;i++)
+		{
+			scanf("%d",&a[i]);
+		}
+		int ans=0;
+		printf("Optimal train swapping takes %d swaps.\n",ans);
+	}
+}
+```
+![](https://i.imgur.com/fEYUICT.png)
+### week12-4
+```c=
+#include <stdio.h>
+int a[100];
+int main()
+{
+	int T;
+	scanf("%d",&T);
+	for(int t=0;t<T;t++)
+	{
+		int N;
+		scanf("%d",&N);
+		for(int i=0;i<N;i++)
+		{
+			scanf("%d",&a[i]);
+		}
+		int ans=0;
+		for(int k=0;k<N-1;k++)
+		{
+			for(int i=0;i<N-1;i++)
+			{
+				if(a[i]>a[i+1])
+				{
+					int temp=a[i];
+					a[i]=a[i+1];
+					a[i+1]=temp;
+					ans++;
+				}
+			}
+		}
+		printf("Optimal train swapping takes %d swaps.\n",ans);
+	}
+}
+```
+![](https://i.imgur.com/eUBXFAK.png)
+### week12-5
+```clike=
+#include <stdio.h>
+int a[10000];
+int main()
+{
+	int N,M;
+	while(scanf("%d %d",&N,&M)==2)
+	{
+		for(int i=0;i<N;i++)
+		{
+			scanf("%d",&a[i]);
+		}
+		printf("%d %d\n",N,M);
+		for(int i=0;i<N;i++)
+		{
+			printf("%d\n",a[i]);
+		}
+	}
+}
+```
+![](https://i.imgur.com/eMNI7yO.png)
+### week12-6
+```c=
+#include <stdio.h>
+int a[10000];
+void swap(int i,int j)
+{
+	int temp=a[i];
+	a[i]=a[j];
+	a[j]=temp;
+}
+int main()
+{
+	int N,M;
+	while(scanf("%d %d",&N,&M)==2)
+	{
+		for(int i=0;i<N;i++)
+		{
+			scanf("%d",&a[i]);
+		}
+		for(int i=0;i<N;i++)
+		{
+			for(int j=i+1;j<N;j++)
+			{
+				if(a[i]%M>a[j]%M) swap(i,j);
+				if(a[i]%M==a[j]%M&&a[i]%2==0&&a[j]%2!=0) swap(i,j);
+				if(a[i]%M==a[j]%M&&a[i]%2!=0&&a[j]%2!=0&&a[i]<a[j]) swap(i,j);
+				if(a[i]%M==a[j]%M&&a[i]%2==0&&a[j]%2==0&&a[i]>a[j]) swap(i,j);
+			}
+		}
+		printf("%d %d\n",N,M);
+		for(int i=0;i<N;i++)
+		{
+			printf("%d\n",a[i]);
+		}
+	}
+}
+```
+![](https://i.imgur.com/wsqUrqE.png)
