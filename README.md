@@ -1,208 +1,122 @@
-# 2020cce
-## 5/13程式
-### week12-1
-```c=
-#include <stdio.h>
-char line[2000];
-int main()
+#2020cce
+## 5/20程式
+### week13-1
+```java=
+void draw()
 {
-	for(int t=0;gets(line);t++)
-	{
-		int ans[256]={};
-		char ascii[256];
-		for(int i=0;i<256;i++) ascii[i]=i;
-		for(int i=0;line[i]!=0;i++)
-		{
-			char c=line[i];
-			ans[c]++;
-		}
-		for(int i=0;i<256;i++)
-		{
-			for(int j=i+1;j<256;j++)
-			{
-				if(ans[i]>ans[j])
-				{
-					int temp=ans[i];
-					ans[i]=ans[j];
-					ans[j]=temp;
-					char c=ascii[i];
-					ascii[i]=ascii[j];
-					ascii[j]=c;
-				}
-			}
-		}
-		if(t>0) printf("\n");
-		for(int i=0;i<256;i++)
-		{
-			if(ans[i]>0) printf("%d %d\n",i,ans[i]);
-		}
-	}
+  if(mousePressed) background(191,23,8);
+  else background(27,8,255);
+  text(a,512,200);
 }
 ```
-![](https://i.imgur.com/0gzqj2z.png)
-### week12-2
-```c=
-#include <stdio.h>
-char line[2000];
-int main()
+![](https://i.imgur.com/7trpcPs.jpg)
+### week13-2
+```java=
+void draw()
 {
-	for(int t=0;gets(line);t++)
-	{
-		int ans[256]={};
-		char ascii[256];
-		for(int i=0;i<256;i++) ascii[i]=i;
-		for(int i=0;line[i]!=0;i++)
-		{
-			char c=line[i];
-			ans[c]++;
-		}
-		for(int i=0;i<256;i++)
-		{
-			for(int j=i+1;j<256;j++)
-			{
-				if(ans[i]>ans[j])
-				{
-					int temp=ans[i];
-					ans[i]=ans[j];
-					ans[j]=temp;
-					char c=ascii[i];
-					ascii[i]=ascii[j];
-					ascii[j]=c;
-				}
-				if(ans[i]==ans[j]&&ascii[i]<ascii[j])
-				{
-					int temp=ans[i];
-					ans[i]=ans[j];
-					ans[j]=temp;
-					char c=ascii[i];
-					ascii[i]=ascii[j];
-					ascii[j]=c;
-				}
-			}
-		}
-		if(t>0) printf("\n");
-		for(int i=0;i<256;i++)
-		{
-			if(ans[i]>0) printf("%d %d\n",ascii[i],ans[i]);
-		}
-	}
+  if(mousePressed) background(191,23,8);//暗紅色
+  else background(27,8,255);//藍色
+  text(a,512,200);
 }
 ```
-![](https://i.imgur.com/XFF6yee.png)
-### week12-3
-```c=
-#include <stdio.h>
-int a[100];
-int main()
+![](https://i.imgur.com/v9JxKYl.jpg)
+### week13-3
+```java=
+void draw()
 {
-	int T;
-	scanf("%d",&T);
-	for(int t=0;t<T;t++)
-	{
-		int N;
-		scanf("%d",&N);
-		for(int i=0;i<N;i++)
-		{
-			scanf("%d",&a[i]);
-		}
-		int ans=0;
-		printf("Optimal train swapping takes %d swaps.\n",ans);
-	}
+  if(mousePressed) background(191,23,8);//暗紅色
+  else background(27,8,255);//藍色
+  text(a,512,200);
+}
+int a=0;
+void mousePressed()
+{
+  a++;
 }
 ```
-![](https://i.imgur.com/fEYUICT.png)
-### week12-4
-```c=
-#include <stdio.h>
-int a[100];
-int main()
+![](https://i.imgur.com/FXsmUwU.jpg)
+### week13-4
+```java=
+void setup()
 {
-	int T;
-	scanf("%d",&T);
-	for(int t=0;t<T;t++)
-	{
-		int N;
-		scanf("%d",&N);
-		for(int i=0;i<N;i++)
-		{
-			scanf("%d",&a[i]);
-		}
-		int ans=0;
-		for(int k=0;k<N-1;k++)
-		{
-			for(int i=0;i<N-1;i++)
-			{
-				if(a[i]>a[i+1])
-				{
-					int temp=a[i];
-					a[i]=a[i+1];
-					a[i+1]=temp;
-					ans++;
-				}
-			}
-		}
-		printf("Optimal train swapping takes %d swaps.\n",ans);
-	}
+  size(1024,400);
+}
+void draw()
+{
+  if(mousePressed) background(191,23,8);//暗紅色
+  else background(27,8,255);//藍色
+  textSize(36);
+  text("中文壞掉Now a is:"+a,212,200);
+}
+int a=0;
+void mousePressed()
+{
+  a++;
 }
 ```
-![](https://i.imgur.com/eUBXFAK.png)
-### week12-5
-```clike=
-#include <stdio.h>
-int a[10000];
-int main()
+![](https://i.imgur.com/LAL00Ls.jpg)
+### week13-5
+```java=
+void setup()
 {
-	int N,M;
-	while(scanf("%d %d",&N,&M)==2)
-	{
-		for(int i=0;i<N;i++)
-		{
-			scanf("%d",&a[i]);
-		}
-		printf("%d %d\n",N,M);
-		for(int i=0;i<N;i++)
-		{
-			printf("%d\n",a[i]);
-		}
-	}
+  size(1024,400);
+}
+void draw()
+{
+  background(#FFF708);
+  int s=second();
+  int m=minute();
+  int h=hour();
+  textSize(80);
+  text(h+":"+m+":"+s,100,200);
 }
 ```
-![](https://i.imgur.com/eMNI7yO.png)
-### week12-6
-```c=
-#include <stdio.h>
-int a[10000];
-void swap(int i,int j)
+![](https://i.imgur.com/J6w4DyY.jpg)
+### week13-6
+```java=
+void setup()
 {
-	int temp=a[i];
-	a[i]=a[j];
-	a[j]=temp;
+  size(1024,400);
+  textFont(createFont("標楷體",80));
 }
-int main()
+void draw()
 {
-	int N,M;
-	while(scanf("%d %d",&N,&M)==2)
-	{
-		for(int i=0;i<N;i++)
-		{
-			scanf("%d",&a[i]);
-		}
-		for(int i=0;i<N;i++)
-		{
-			for(int j=i+1;j<N;j++)
-			{
-				if(a[i]%M>a[j]%M) swap(i,j);
-				if(a[i]%M==a[j]%M&&a[i]%2==0&&a[j]%2!=0) swap(i,j);
-				if(a[i]%M==a[j]%M&&a[i]%2!=0&&a[j]%2!=0&&a[i]<a[j]) swap(i,j);
-				if(a[i]%M==a[j]%M&&a[i]%2==0&&a[j]%2==0&&a[i]>a[j]) swap(i,j);
-			}
-		}
-		printf("%d %d\n",N,M);
-		for(int i=0;i<N;i++)
-		{
-			printf("%d\n",a[i]);
-		}
-	}
+  background(#FFF708);
+  int s=second();
+  int m=minute();
+  int h=hour();
+  textSize(80);
+  text(h+":"+m+":"+s,100,200);
+  int total=s+60*m+60*60*h;
+  int closeH=17,closeM=40,closeS=0;
+  int total2=closeS+60*closeM+60*60*closeH;
+  int ans=total2-total;
+  text("剩下幾秒:"+ans,100,100);
 }
 ```
-![](https://i.imgur.com/wsqUrqE.png)
+![](https://i.imgur.com/JdXKdP8.jpg)
+### week13-7
+```java=
+void setup()
+{
+  size(1024,400);
+  textFont(createFont("標楷體",80));
+}
+void draw()
+{
+  background(#FFF708);
+  int s=second();
+  int m=minute();
+  int h=hour();
+  textSize(80);
+  text(h+":"+m+":"+s,100,200);
+  int total=s+60*m+60*60*h;
+  int closeH=17,closeM=40,closeS=0;
+  int total2=closeS+60*closeM+60*60*closeH;
+  int ans=total2-total;
+  text("剩下幾秒:"+ans,100,100);
+  int ansH=ans/60/60%60,ansM=ans/60%60,ansS=ans%60;
+  text(ansH+":"+ansM+":"+ansS,100,300);
+}
+```
+![](https://i.imgur.com/4vN8euh.jpg)
