@@ -1,122 +1,150 @@
-#2020cce
-## 5/20程式
-### week13-1
+# 2020cce
+## 5/27程式
+### week14-1
 ```java=
+void setup()
+{
+  float ans=random(60);
+  text(ans,20,20);
+}
 void draw()
 {
-  if(mousePressed) background(191,23,8);
-  else background(27,8,255);
-  text(a,512,200);
+   
 }
 ```
-![](https://i.imgur.com/7trpcPs.jpg)
-### week13-2
+![](https://i.imgur.com/QR8zsFq.jpg)
+### week14-2
 ```java=
+int ans=0;
+void setup()
+{
+  textSize(30);
+}
 void draw()
 {
-  if(mousePressed) background(191,23,8);//暗紅色
-  else background(27,8,255);//藍色
-  text(a,512,200);
+  background(#F2330C);
+  text(ans,20,30);
 }
-```
-![](https://i.imgur.com/v9JxKYl.jpg)
-### week13-3
-```java=
-void draw()
-{
-  if(mousePressed) background(191,23,8);//暗紅色
-  else background(27,8,255);//藍色
-  text(a,512,200);
-}
-int a=0;
 void mousePressed()
 {
-  a++;
+  ans=(int)random(60);
 }
 ```
-![](https://i.imgur.com/FXsmUwU.jpg)
-### week13-4
+![](https://i.imgur.com/9mWqiJT.jpg)
+### week14-3
 ```java=
+int []a={1,2,3,4,5,6,7,8,9,10};
+int i1,i2;
 void setup()
 {
-  size(1024,400);
+  size(400,100);
+  textSize(30);
 }
 void draw()
 {
-  if(mousePressed) background(191,23,8);//暗紅色
-  else background(27,8,255);//藍色
-  textSize(36);
-  text("中文壞掉Now a is:"+a,212,200);
+  background(#F2330C);
+  for(int i=0;i<10;i++)
+  {
+    text(a[i],i*40,50);
+  }
+  rect(i1*40,50,30,30);
+  rect(i2*40,50,30,30);
 }
-int a=0;
 void mousePressed()
 {
-  a++;
+  i1=(int)random(10);
+  i2=(int)random(10);
+  int temp=a[i1]; a[i1]=a[i2]; a[i2]=temp;
 }
 ```
-![](https://i.imgur.com/LAL00Ls.jpg)
-### week13-5
+![](https://i.imgur.com/MngQ7Yw.jpg)
+### week14-4
 ```java=
+int []a=new int[47];
 void setup()
 {
-  size(1024,400);
+  size(500,200);
+  textSize(30);
+  for(int i=0;i<47;i++) a[i]=i;
+  
+  for(int i=0;i<1000;i++)
+  {
+      int i1=(int)random(47);
+      int i2=(int)random(47);
+      int temp=a[i1]; a[i1]=a[i2]; a[i2]=temp;
+  }
 }
 void draw()
 {
-  background(#FFF708);
-  int s=second();
-  int m=minute();
-  int h=hour();
-  textSize(80);
-  text(h+":"+m+":"+s,100,200);
+    background(#6F1301);
+    for(int i=0;i<5;i++)
+    {
+        text(a[i],i*80,100);
+    }
 }
 ```
-![](https://i.imgur.com/J6w4DyY.jpg)
-### week13-6
+![](https://i.imgur.com/N7cOyTa.jpg)
+### week14-5
 ```java=
+int []a=new int[47];
 void setup()
 {
-  size(1024,400);
-  textFont(createFont("標楷體",80));
+  size(500,200);
+  textSize(30);
+  for(int i=0;i<47;i++) a[i]=i;
+  
+  for(int i=0;i<1000;i++)
+  {
+      int i1=(int)random(47);
+      int i2=(int)random(47);
+      int temp=a[i1]; a[i1]=a[i2]; a[i2]=temp;
+  }
 }
+int N=0;
 void draw()
 {
-  background(#FFF708);
-  int s=second();
-  int m=minute();
-  int h=hour();
-  textSize(80);
-  text(h+":"+m+":"+s,100,200);
-  int total=s+60*m+60*60*h;
-  int closeH=17,closeM=40,closeS=0;
-  int total2=closeS+60*closeM+60*60*closeH;
-  int ans=total2-total;
-  text("剩下幾秒:"+ans,100,100);
+    background(#6F1301);
+    for(int i=0;i<N;i++)
+    {
+        text(a[i],i*80,100);
+    }
+}
+void mousePressed()
+{
+  N++;
 }
 ```
-![](https://i.imgur.com/JdXKdP8.jpg)
-### week13-7
+![](https://i.imgur.com/5CyLUCq.jpg)
+### week14-6
 ```java=
+int []a=new int[47];
 void setup()
 {
-  size(1024,400);
-  textFont(createFont("標楷體",80));
+  size(500,200);
+  textSize(30);
+  for(int i=0;i<47;i++) a[i]=i;
+  
+  for(int i=0;i<1000;i++)
+  {
+      int i1=(int)random(47);
+      int i2=(int)random(47);
+      int temp=a[i1]; a[i1]=a[i2]; a[i2]=temp;
+  }
 }
+int N=0;
 void draw()
 {
-  background(#FFF708);
-  int s=second();
-  int m=minute();
-  int h=hour();
-  textSize(80);
-  text(h+":"+m+":"+s,100,200);
-  int total=s+60*m+60*60*h;
-  int closeH=17,closeM=40,closeS=0;
-  int total2=closeS+60*closeM+60*60*closeH;
-  int ans=total2-total;
-  text("剩下幾秒:"+ans,100,100);
-  int ansH=ans/60/60%60,ansM=ans/60%60,ansS=ans%60;
-  text(ansH+":"+ansM+":"+ansS,100,300);
+  background(#6F1301);
+  textAlign(CENTER,CENTER);
+  for(int i=0;i<N;i++)
+  {
+    fill(255); ellipse(i*80+40,100,55,55);
+    fill(0);   text(a[i],i*80+40,100);
+  }
+}
+void mousePressed()
+{
+  N++;
 }
 ```
-![](https://i.imgur.com/4vN8euh.jpg)
+![](https://i.imgur.com/ntfuLWU.jpg)
