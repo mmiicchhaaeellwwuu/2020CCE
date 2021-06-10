@@ -1,6 +1,6 @@
 # 2020cce
-## 6/3程式
-### week15-1
+## 6/10程式
+### week16-1
 ```java=
 void setup()
 {
@@ -8,109 +8,178 @@ void setup()
 }
 void draw()
 {
-  int s=second();
-  if(s%2==0) background(255,0,0);
-  else background(58,114,191);
+  background(#0C33C9);
+  ellipse(50,50,80,80);
 }
 ```
-![](https://i.imgur.com/JCgz0EX.jpg)
-### week15-2
+![](https://i.imgur.com/G88h6Mb.jpg)
+### week16-2
 ```java=
 void setup()
 {
   size(400,200);
+}
+void draw()
+{
+  background(#7D2A90);
+  fill(255);
+  ellipse(50,50, 80,80);
+  fill(255,0,0);
+  float stop=mouseX/50.0;
+  text(stop,100,100);
+  arc(50,50, 80,80, 0,stop);
+}
+```
+![](https://i.imgur.com/CiKKDNp.jpg)
+### week16-3
+```java=
+void setup()
+{
+  size(400,200);
+}
+void draw()
+{
+  background(#7D2A90);
+  fill(255);
+  ellipse(50,50, 80,80);
+  fill(255,0,0);
+  float start=mouseX/50.0;
   textSize(40);
-}
-void draw()
-{
-  int s=second();
-  background(58,114,191);
-  text(10-s%11,100,100);
+  text(start,100,100);
+  arc(50,50, 80,80, 0+start,0.1+start);
 }
 ```
-![](https://i.imgur.com/UV4yfU1.jpg)
-### week15-3
+![](https://i.imgur.com/82ANxbh.jpg)
+### week16-4
 ```java=
-import processing.sound.*;
-SoundFile player;
 void setup()
 {
   size(400,200);
-  player=new SoundFile(this,"tada.mp3");
 }
 void draw()
 {
-  background(51,114,191);
+  background(#7D2A90);
+  fill(255);
+  ellipse(100,100, 180,180);
+  fill(255,0,0);
+  float start=mouseX/50.0;
+  for(int i=0;i<24;i++)
+  {
+    float shift=2*PI*i/24.0;
+    if(i%3==0) fill(0);
+    if(i%3==1) fill(#0FF08C);
+    if(i%3==2) fill(255);
+    arc(100,100, 180,180,shift+0+start,shift+PI/12+start);
+  }
+}
+```
+![](https://i.imgur.com/0kAappU.jpg)
+### week16-5
+```java=
+void setup()
+{
+  size(400,200);
+}
+void draw()
+{
+  background(#7D2A90);
+  fill(255);
+  ellipse(100,100, 180,180);
+  fill(255,0,0);
+  float start=mouseX/50.0;
+  for(int i=0;i<24;i++)
+  {
+    float shift=2*PI*i/24.0;
+    if(i%3==0) fill(0);
+    if(i%3==1) fill(#0FF08C);
+    if(i%3==2) fill(255);
+    if(i==0) fill(#0F1BF0);
+    arc(100,100, 180,180,shift+0+start,shift+PI/12+start);
+  }
+}
+```
+![](https://i.imgur.com/BUxWC2f.jpg)
+### week16-6
+```java=
+void setup()
+{
+  size(400,200);
+}
+float start=0;
+void draw()
+{
+  background(#7D2A90);
+  if(start<10) start+=0.01;
+  fill(255); text(start,200,150);
+  for(int i=0;i<24;i++)
+  {
+    float shift=i*PI/12;
+    if(i%3==0) fill(#000000);
+    if(i%3==1) fill(#0FF08C);
+    if(i%3==2) fill(#FFFFFF);
+    if(i==0) fill(#0F1BF0);
+    arc(100,100, 180,180,shift+0+start,shift+PI/12+start);
+  }
+}
+```
+![](https://i.imgur.com/47SG8tX.jpg)
+### week16-7
+```java=
+void setup()
+{
+  size(400,200);
+}
+float start=0,v=0.07;
+void draw()
+{
+  background(#7D2A90);
+  if(v>0.001)
+  {
+    start+=v;
+    v*=0.99;
+  }
+  fill(255); text(start,200,150); text(v,200,170);
+  for(int i=0;i<24;i++)
+  {
+    float shift=i*PI/12;
+    if(i%3==0) fill(#000000);
+    if(i%3==1)  fill(#0FF08C);
+    if(i%3==2) fill(#FFFFFF);
+    if(i==0) fill(#0F1BF0);
+    arc(100,100, 180,180,shift+0+start,shift+PI/12+start);
+  }
+}
+```
+![](https://i.imgur.com/AszB4Md.jpg)
+### week16-8
+```java=
+void setup()
+{
+  size(400,200);
+}
+float start=0,v;
+void draw()
+{
+  background(#7D2A90);
+  if(v>0.001)
+  {
+    start+=v;
+    v*=0.99;
+  }
+  fill(255); text(start,200,150); text(v,200,170);
+  for(int i=0;i<24;i++)
+  {
+    float shift=i*PI/12;
+    if(i%3==0) fill(#000000);
+    if(i%3==1)  fill(#0FF08C);
+    if(i%3==2) fill(#FFFFFF);
+    if(i==0) fill(#0F1BF0);
+    arc(100,100, 180,180,shift+0+start,shift+PI/12+start);
+  }
 }
 void mousePressed()
 {
-  player.play();
+  v=random(1);
 }
 ```
-![](https://i.imgur.com/LN0wFwu.jpg)
-### week15-4
-```java=
-import processing.sound.*;
-SoundFile player;
-void setup()
-{
-  size(400,200);
-  player=new SoundFile(this,"bell.mp3");
-}
-void draw()
-{
-  background(51,114,191);
-}
-void mousePressed()
-{
-  if(player.isPlaying())
-  {
-    player.stop();
-  }
-  else
-  {
-    player.play();
-  }
-}
-```
-![](https://i.imgur.com/8YApzhw.jpg)
-### week15-5
-```java=
-import processing.sound.*;
-SoundFile player;
-void setup()
-{
-  size(400,200);
-  textSize(40);
-  player=new SoundFile(this,"tada.mp3");
-}
-void draw()
-{
-  int s=second();
-  background(58,114,191);
-  text(10-s%11,100,100);
-  if(10-s%11==0&&!player.isPlaying())
-  {
-    player.play();
-  }
-}
-```
-![](https://i.imgur.com/6UN5pZx.jpg)
-### week15-6
-```java=
-function setup() {
-  createCanvas(400,200);
-}
-function draw() {
-  let s=second();
-  if(s%2==0) 
-  {
-    background(255,0,0);
-  }
-  else 
-  {
-    background(58,114,191);
-  }
-}
-```
-![](https://i.imgur.com/xA69ggJ.jpg)
+![](https://i.imgur.com/FL2xyNJ.jpg)
