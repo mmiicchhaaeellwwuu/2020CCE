@@ -1,185 +1,172 @@
 # 2020cce
-## 6/10程式
-### week16-1
+## 6/17程式
+### week17-1
 ```java=
 void setup()
 {
   size(400,200);
-}
-void draw()
-{
-  background(#0C33C9);
-  ellipse(50,50,80,80);
-}
-```
-![](https://i.imgur.com/G88h6Mb.jpg)
-### week16-2
-```java=
-void setup()
-{
-  size(400,200);
-}
-void draw()
-{
-  background(#7D2A90);
-  fill(255);
-  ellipse(50,50, 80,80);
-  fill(255,0,0);
-  float stop=mouseX/50.0;
-  text(stop,100,100);
-  arc(50,50, 80,80, 0,stop);
-}
-```
-![](https://i.imgur.com/CiKKDNp.jpg)
-### week16-3
-```java=
-void setup()
-{
-  size(400,200);
-}
-void draw()
-{
-  background(#7D2A90);
-  fill(255);
-  ellipse(50,50, 80,80);
-  fill(255,0,0);
-  float start=mouseX/50.0;
   textSize(40);
-  text(start,100,100);
-  arc(50,50, 80,80, 0+start,0.1+start);
+}
+String line="hello";
+void draw()
+{
+  background(#FAD412);
+  text(line,100,100);
+  text("World",100,150);
 }
 ```
-![](https://i.imgur.com/82ANxbh.jpg)
-### week16-4
+![](https://i.imgur.com/XQxhIk3.jpg)
+### week17-2
 ```java=
 void setup()
 {
   size(400,200);
+  textSize(40);
 }
+String line="hello";
+char c='9';
 void draw()
 {
-  background(#7D2A90);
-  fill(255);
-  ellipse(100,100, 180,180);
-  fill(255,0,0);
-  float start=mouseX/50.0;
-  for(int i=0;i<24;i++)
-  {
-    float shift=2*PI*i/24.0;
-    if(i%3==0) fill(0);
-    if(i%3==1) fill(#0FF08C);
-    if(i%3==2) fill(255);
-    arc(100,100, 180,180,shift+0+start,shift+PI/12+start);
-  }
+  background(#FAD412);
+  text(line+c,100,100);
+  text("World:"+key,100,150);
 }
 ```
-![](https://i.imgur.com/0kAappU.jpg)
-### week16-5
+![](https://i.imgur.com/2mKV8X1.jpg)
+### week17-3
 ```java=
 void setup()
 {
   size(400,200);
+  textSize(40);
 }
+char c='9';
+int win=0;
 void draw()
 {
-  background(#7D2A90);
-  fill(255);
-  ellipse(100,100, 180,180);
-  fill(255,0,0);
-  float start=mouseX/50.0;
-  for(int i=0;i<24;i++)
-  {
-    float shift=2*PI*i/24.0;
-    if(i%3==0) fill(0);
-    if(i%3==1) fill(#0FF08C);
-    if(i%3==2) fill(255);
-    if(i==0) fill(#0F1BF0);
-    arc(100,100, 180,180,shift+0+start,shift+PI/12+start);
-  }
+  background(#FAD412);
+  text("Press:"+c,100,100);
+  text("You  "+key,100,150);
+  if(c==key) win=1;
+  else win=0;
+  if(win==1) text("You win!",100,50);
 }
 ```
-![](https://i.imgur.com/BUxWC2f.jpg)
-### week16-6
+![](https://i.imgur.com/nsYbLxK.jpg)
+### week17-4
 ```java=
 void setup()
 {
   size(400,200);
+  textSize(40);
 }
-float start=0;
+char c='9';
+String ans="abcdefghijklmnopqrstuvwxyzACDEFGHIJKLMNOPQRSTUVWXYZ";
+int win=0;
 void draw()
 {
-  background(#7D2A90);
-  if(start<10) start+=0.01;
-  fill(255); text(start,200,150);
-  for(int i=0;i<24;i++)
+  background(#FAD412);
+  text("Press:"+c,100,100);
+  text("You  "+key,100,150);
+  if(c==key) win=1;
+  else win=0;
+  if(win==1)
   {
-    float shift=i*PI/12;
-    if(i%3==0) fill(#000000);
-    if(i%3==1) fill(#0FF08C);
-    if(i%3==2) fill(#FFFFFF);
-    if(i==0) fill(#0F1BF0);
-    arc(100,100, 180,180,shift+0+start,shift+PI/12+start);
+    text("You Win!",100,50);
+    int i=int(random(26+26));
+    c=ans.charAt(i);
   }
 }
 ```
-![](https://i.imgur.com/47SG8tX.jpg)
-### week16-7
+![](https://i.imgur.com/FlIeIzY.jpg)
+### week17-5
 ```java=
 void setup()
 {
   size(400,200);
+  textSize(40);
 }
-float start=0,v=0.07;
+int x=100,y=100;
 void draw()
 {
-  background(#7D2A90);
-  if(v>0.001)
-  {
-    start+=v;
-    v*=0.99;
-  }
-  fill(255); text(start,200,150); text(v,200,170);
-  for(int i=0;i<24;i++)
-  {
-    float shift=i*PI/12;
-    if(i%3==0) fill(#000000);
-    if(i%3==1)  fill(#0FF08C);
-    if(i%3==2) fill(#FFFFFF);
-    if(i==0) fill(#0F1BF0);
-    arc(100,100, 180,180,shift+0+start,shift+PI/12+start);
-  }
+  background(#FAD412);
+  rect(x,y,50,50);
+}
+void keyPressed()
+{
+  if(keyCode==LEFT) x-=10;
+  if(keyCode==RIGHT) x+=10;
 }
 ```
-![](https://i.imgur.com/AszB4Md.jpg)
-### week16-8
+![](https://i.imgur.com/QPfqvoL.jpg)
+### week17-6
 ```java=
 void setup()
 {
   size(400,200);
+  textSize(40);
 }
-float start=0,v;
+float x=100,y=100,vx=0,vy=0;
 void draw()
 {
-  background(#7D2A90);
-  if(v>0.001)
-  {
-    start+=v;
-    v*=0.99;
-  }
-  fill(255); text(start,200,150); text(v,200,170);
-  for(int i=0;i<24;i++)
-  {
-    float shift=i*PI/12;
-    if(i%3==0) fill(#000000);
-    if(i%3==1)  fill(#0FF08C);
-    if(i%3==2) fill(#FFFFFF);
-    if(i==0) fill(#0F1BF0);
-    arc(100,100, 180,180,shift+0+start,shift+PI/12+start);
-  }
+  background(#FAD412);
+  rect(x,y,50,50);
+  x+=vx;
 }
-void mousePressed()
+void keyPressed()
 {
-  v=random(1);
+  if(keyCode==LEFT) vx-=1;
+  if(keyCode==RIGHT) vx+=1;
+}
+void keyReleased()
+{
+  vx=0;
 }
 ```
-![](https://i.imgur.com/FL2xyNJ.jpg)
+![](https://i.imgur.com/y1OTuUQ.jpg)
+### week17-7
+```java=
+String A="mother";
+String line="";
+void setup()
+{
+  size(400,300);
+  textSize(40);
+}
+void draw()
+{
+  background(0);
+  text(A,100,100);
+  text(line+"|",100,150);
+}
+void keyPressed()
+{
+  line=line+key;
+}
+```
+![](https://i.imgur.com/IAp83Jt.jpg)
+### week17-8
+```java=
+String A="mother";
+String line="";
+void setup()
+{
+  size(400,300);
+  textSize(40);
+}
+void draw()
+{
+  background(0);
+  text(A,100,100);
+  text(line+"|",100,150);
+}
+void keyPressed()
+{
+  int len=line.length();
+  if(key>='a'&&key<='z') line=line+key;
+  if(key>='A'&&key<='Z') line=line+key;
+  if(key==ENTER){  }
+  if(key==BACKSPACE&&len>0) line=line.substring(0,len-1);
+}
+```
+![](https://i.imgur.com/P7fPRLr.jpg)
